@@ -69,6 +69,43 @@ public class M092_ReverseLinkedList2 {
 
         return head;
     }
+
+    public ListNode reverseBetween3(ListNode head, int m, int n){
+        if(head == null || head.next == null){
+            return head;
+        }
+        ListNode p = null;
+        ListNode start = head;
+        ListNode tail = head;
+        while(m > 1 && start != null){
+            p = start;
+            start = start.next;
+            m--;
+        }
+        while(n > 0 && tail != null){
+            tail = tail.next;
+            n--;
+        }
+
+        ListNode q = start;
+
+        ListNode prev, cur, nxt;
+        prev = null; cur = start; nxt = start;
+        while(cur != tail){
+            nxt = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = nxt;
+        }
+
+        q.next = cur;
+        if(p == null){
+            return prev;
+        }
+        p.next = prev;
+
+        return head;
+    }
 }
 
 

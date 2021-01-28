@@ -1,5 +1,6 @@
 package com.medium;
 
+import com.domain.ListNode;
 import com.domain.TreeNode;
 /**
  * Definition for a binary tree node.
@@ -48,6 +49,38 @@ public class M114_FlattenBinaryTreeToLinkedList {
         root.left = null;
         pre = root;
     }
+
+
+
+    public void flatten3(TreeNode root){
+        if(root == null){
+            return;
+        }
+        order(root);
+    }
+
+    public void order(TreeNode root){
+        if(root == null){
+            return;
+        }
+        order(root.left);
+        order(root.right);
+
+        //此时root的左右子树都被拉成一条链表了
+
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+
+        root.left = null;
+        root.right = left;
+
+        TreeNode p = root;
+        while(p.right != null){
+            p = p.right;
+        }
+        p.right = right;
+    }
+
 }
 
 

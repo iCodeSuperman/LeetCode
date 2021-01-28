@@ -7,7 +7,11 @@ import org.junit.Test;
 import java.util.*;
 
 public class BinaryTreePreOrder {
-    //二叉树先序非递归遍历
+
+    /**
+     * 1. 二叉树先序遍历 - 非递归，用栈
+     * @param head
+     */
     public void preOrderNonRecursion(TreeNode head){
         Deque<TreeNode> st = new ArrayDeque<>();
         List<Integer> res = new ArrayList<>();
@@ -25,7 +29,10 @@ public class BinaryTreePreOrder {
         System.out.println(res);
     }
 
-    //二叉树中序非递归遍历
+    /**
+     * 2. 二叉树中序遍历 - 非递归，用栈
+     * @param head
+     */
     public void inOrderNonRecursion(TreeNode head){
         Deque<TreeNode> st = new ArrayDeque<>();
         List<Integer> res = new ArrayList<>();
@@ -48,7 +55,10 @@ public class BinaryTreePreOrder {
         System.out.println(res);
     }
 
-    //二叉树后序非递归遍历
+    /**
+     * 3. 二叉树后续遍历 - 非递归，用栈
+     * @param head
+     */
     public void postOrderNonRecursion(TreeNode head){
         Deque<TreeNode> st = new ArrayDeque<>();
         Deque<TreeNode> st2 = new ArrayDeque<>();
@@ -101,6 +111,59 @@ public class BinaryTreePreOrder {
         }
         return result;
     }
+
+    /**
+     * 4. 二叉树先序遍历 - Morris
+     * @param root
+     */
+
+
+    /**
+     * 5. 二叉树中序遍历 - Morris
+     * 规则：
+     *      cur : 当前节点
+     *      (1) 若cur.left为空，则输出cur.value，并更新cur = cur.right。
+     *      (2) 若cur.left不为空，则在cur.left中找到cur的前驱结点pre，即cur.left中值最大的结点：
+     *          - 若pre.right为空，则更新pre.right = cur；同时更新cur = cur.left
+     *          - 若pre.right不空，即pre.right == cur, 表示已经遍历完cur的左子树；
+     *            则将pre.right=null，输出cur.val，更新cur=cur.right；
+     * @param root
+     */
+
+    public void inOrderByMorris(TreeNode root){
+        if(root == null){
+            return;
+        }
+        TreeNode cur = root;
+        TreeNode pre = null;
+        while(cur != null){
+            //(1) cur.left为空
+            if(cur.left == null){
+                System.out.println(cur.val);
+                cur = cur.right;
+            }
+
+            //(2) cur.left不为空
+            else{
+                pre = cur.left;
+                //前驱结点不为空同时不等于cur
+                while(pre.right != null && pre.right != cur){
+                    pre = pre.right;
+                }
+                if(pre.right == null){
+                    pre.right = cur;
+                    cur = cur.left;
+                }else{
+                    pre.right = null;
+                    System.out.println(cur.val);
+                    cur = cur.right;
+                }
+            }
+        }
+    }
+
+
+
 
 
 

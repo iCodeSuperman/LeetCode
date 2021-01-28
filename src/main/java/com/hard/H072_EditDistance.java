@@ -1,4 +1,4 @@
-package com;
+package com.hard;
 
 public class H072_EditDistance {
     public int minDistance(String word1, String word2) {
