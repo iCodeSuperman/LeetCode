@@ -1,6 +1,6 @@
 package com.hard;
 
-public class H45_JumpGame2 {
+public class H045_JumpGame2 {
     public int jump(int[] nums) {
         int len = nums.length;
         int end = 0;
