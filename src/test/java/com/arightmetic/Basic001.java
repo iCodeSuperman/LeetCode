@@ -13,9 +13,6 @@ public class Basic001 {
         System.out.println("14%-3 = "+(14%(-3)));
     }
 
-    @Test
-    public void test2(){
 
 
-    }
 }
