@@ -37,7 +37,6 @@ public class M046_Permutations {
 
     }
 
-
     public int fac(int n){
         if(n == 0 || n == 1){
             return 1;
@@ -47,5 +46,36 @@ public class M046_Permutations {
             p = p * i;
         }
         return p;
+    }
+}
+
+
+class Permutations {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        LinkedList<Integer> list = new LinkedList<>();
+        int len = nums.length;
+        int[] used = new int[len];
+        dfs(nums, used ,list, len, res);
+        return res;
+    }
+
+    void dfs(int[] nums, int[] used, LinkedList<Integer> list, int len, List<List<Integer>> res){
+        if(list.size() == len){
+            res.add(new LinkedList<>(list));
+            return;
+        }
+
+        for(int i = 0; i < len; i++){
+            if(used[i] == 0){
+                list.add(nums[i]);
+                used[i] = 1;
+                dfs(nums, used, list, len, res);
+                used[i] = 0;
+                list.removeLast();
+            }
+        }
+
+        return;
     }
 }
