@@ -1,4 +1,4 @@
-package com.online;
+package com.HUAWEIonline;
 
 import org.junit.Test;
 

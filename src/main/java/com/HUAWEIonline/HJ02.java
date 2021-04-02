@@ -1,4 +1,4 @@
-package com.online;
+package com.HUAWEIonline;
 
 import java.util.HashMap;
 import java.util.Map;
