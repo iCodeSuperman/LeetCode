@@ -1,4 +1,4 @@
-package com.review;
+package se.review;
 
 import org.junit.Test;
 

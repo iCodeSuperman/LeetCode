@@ -1,4 +1,4 @@
-package com.arithmetic.chapter1;
+package se.arithmetic.chapter1;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.arithmetic;
+package se.arithmetic;
 
 public class UF {
     //记录连通分量

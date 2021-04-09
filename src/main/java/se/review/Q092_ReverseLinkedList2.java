@@ -1,4 +1,4 @@
-package com.review;
+package se.review;
 
 import com.domain.ListNode;
 

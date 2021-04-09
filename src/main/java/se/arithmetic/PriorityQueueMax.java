@@ -1,4 +1,4 @@
-package com.arithmetic;
+package se.arithmetic;
 
 public class PriorityQueueMax <Key extends Comparable<Key>> {
     // 存储元素的数组

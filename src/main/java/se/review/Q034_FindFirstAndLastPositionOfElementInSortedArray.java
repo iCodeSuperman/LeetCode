@@ -1,4 +1,4 @@
-package com.review;
+package se.review;
 
 public class Q034_FindFirstAndLastPositionOfElementInSortedArray {
     public int[] searchRange(int[] nums, int target) {

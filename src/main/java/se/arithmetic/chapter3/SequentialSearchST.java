@@ -1,4 +1,4 @@
-package com.arithmetic.chapter3;
+package se.arithmetic.chapter3;
 
 public class SequentialSearchST<Key, Value> {
     private Node first; //链表首节点

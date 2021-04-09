@@ -1,4 +1,4 @@
-package com.arithmetic;
+package se.arithmetic;
 
 import com.domain.TreeNode;
 import com.tool.CreateTreeByLayerOrder;

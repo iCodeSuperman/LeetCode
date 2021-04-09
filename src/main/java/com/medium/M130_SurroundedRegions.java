@@ -1,7 +1,5 @@
 package com.medium;
 
-import com.review.Q015_3Sum;
-
 public class M130_SurroundedRegions {
     public void solve(char[][] board) {
         if(board.length == 0) return;

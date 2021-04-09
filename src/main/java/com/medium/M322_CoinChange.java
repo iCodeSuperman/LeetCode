@@ -1,6 +1,5 @@
 package com.medium;
 
-import com.arithmetic.BinaryTreePreOrder;
 import org.junit.Test;
 
 import java.util.Arrays;
