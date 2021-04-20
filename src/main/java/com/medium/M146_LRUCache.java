@@ -4,21 +4,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class M146_LRUCache {
+}
 
-    private Map<Integer, DLNode> map;
+class LRUCache{
+    private Map<Integer, Node> map;
     private DoubleList cache;
-    private int cap;
-
-
-    public M146_LRUCache(int capacity) {
-        this.cap = capacity;
-        this.cache = new DoubleList();
-        this.map = new HashMap<>();
+    int cap;
+    public LRUCache(int cap){
+        this.cap = cap;
+        map = new HashMap<>();
+        cache = new DoubleList();
     }
 
     public int get(int key) {
         if(map.containsKey(key)){
-            makeRecently(key); //不要忘记提升为最近最长使用
+            makeRecently(key);
             return map.get(key).value;
         }
         return -1;
@@ -30,95 +30,107 @@ public class M146_LRUCache {
             addRecently(key, value);
             return;
         }
-        //System.out.println(cache.getSize());
-        if(cap == cache.getSize()){
+        if(cache.getSize() == cap){
             removeLeastRecently();
         }
         addRecently(key, value);
     }
 
-    //1. 将某个key提升为最近最长使用
+    /**
+     * 使变最近使用
+     */
     public void makeRecently(int key){
-        if(map.containsKey(key)){
-            DLNode x = map.get(key);
-            cache.remove(x);
-            cache.addLast(x);
-        }
+        Node x = map.get(key);
+        cache.remove(x);
+        cache.addLast(x);
     }
 
-    // 2. 添加最近使用的结点
-    public void addRecently(int key, int val){
-        DLNode x = new DLNode(key, val);
+    /**
+     * 添加最近使用的元素
+     */
+    public void addRecently(int key, int value){
+        Node x = new Node(key, value);
         cache.addLast(x);
         map.put(key, x);
     }
 
-    // 3. 删除一个key
-    public void deleteKey(int key){
-        DLNode x = map.get(key);
-        cache.remove(x);
+    /**
+     * 删除最早的元素
+     */
+    public void removeLeastRecently(){
+        Node x = cache.removeFirst();
+        int key = x.key;
         map.remove(x);
     }
 
-    // 4. 删除最久没有使用的元素
-    public void removeLeastRecently(){
-        DLNode x = cache.removeFirst();
-        map.remove(x.key);
+    /**
+     * 删除指定key的元素
+     */
+    public void deleteKey(int key){
+        Node x = map.get(key);
+        cache.remove(x);
+        map.remove(key);
     }
 
 }
 
-
-// 双向链表结点
-class DLNode{
+class Node{
     public int key, value;
-    public DLNode next, prev;
-    public DLNode(int key, int value){
+    public Node prev, next;
+    public Node(int key, int value){
         this.key = key;
         this.value = value;
     }
 }
 
 class DoubleList{
-    private DLNode head, tail;
-    private int size;
+    public Node head, tail;
+    public int size;
     public DoubleList(){
-        head = new DLNode(0, 0);
-        tail = new DLNode(0, 0);
+        head = new Node(0, 0);
+        tail = new Node(0, 0);
         head.next = tail;
         tail.prev = head;
         size = 0;
     }
 
-    // 将结点x插入到链表末尾
-    public void addLast(DLNode x){
+    /**
+     * 删除头结点，即最近都没有用到的结点
+     */
+    public Node removeFirst(){
+        if(head.next == tail){
+            return null;
+        }
+        Node x = head.next;
+        remove(x);
+        return x;
+    }
+
+    /**
+     * 添加尾结点x，即最近用过的结点
+     */
+    public void addLast(Node x){
         x.prev = tail.prev;
         x.next = tail;
         tail.prev.next = x;
         tail.prev = x;
-        size ++;
+        size++;
     }
 
-    // 将结点x删除
-    public void remove(DLNode x){
+    /**
+     * 删除一个x结点，但是保证x必须存在
+     */
+    public void remove(Node x){
         x.prev.next = x.next;
         x.next.prev = x.prev;
-        size --;
+        size--;
     }
 
-    // 删除链表头结点，并返回值
-    public DLNode removeFirst(){
-        if(head.next == tail){
-            return null;
-        }
-
-        DLNode first = head.next;
-        remove(first);
-        return first;
-    }
-
+    /**
+     * 返回链表的长度
+     */
     public int getSize(){
-        return size;
+        return this.size;
     }
 
 }

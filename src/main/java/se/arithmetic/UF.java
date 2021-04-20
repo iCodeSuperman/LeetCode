@@ -1,5 +1,8 @@
 package se.arithmetic;
 
+/**
+ * @author icodeboy
+ */
 public class UF {
     //记录连通分量
     private int count;
