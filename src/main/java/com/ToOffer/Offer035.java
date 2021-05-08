@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Offer035 {
-    public Node copyRandomList2(Node head) {
+    public com.ToOffer.offer036.Node copyRandomList2(com.ToOffer.offer036.Node head) {
         if(head == null) return null;
-        Node cur = head;
+        com.ToOffer.offer036.Node cur = head;
         while(cur != null){
-            Node tmp = new Node(cur.val);
+            com.ToOffer.offer036.Node tmp = new com.ToOffer.offer036.Node(cur.val);
             tmp.next = cur.next;
             cur.next = tmp;
             cur = tmp.next;
@@ -22,8 +22,8 @@ public class Offer035 {
         }
 
         cur = head.next;
-        Node pre = head;
-        Node res = head.next;
+        com.ToOffer.offer036.Node pre = head;
+        com.ToOffer.offer036.Node res = head.next;
         while(cur.next != null){
             pre.next = cur.next;
             pre = pre.next;
@@ -35,19 +35,19 @@ public class Offer035 {
     }
 
 
-    public Node copyRandomList(Node head) {
-        Map<Node, Node> map = new HashMap<>();
-        Node cur = head;
+    public com.ToOffer.offer036.Node copyRandomList(com.ToOffer.offer036.Node head) {
+        Map<com.ToOffer.offer036.Node, com.ToOffer.offer036.Node> map = new HashMap<>();
+        com.ToOffer.offer036.Node cur = head;
         while(cur != null){
             int value = cur.val;
-            Node newNode = new Node(value);
+            com.ToOffer.offer036.Node newNode = new com.ToOffer.offer036.Node(value);
             map.put(cur, newNode);
             cur = cur.next;
         }
 
         cur = head;
         while(cur != null){
-            Node newCur = map.get(cur);
+            com.ToOffer.offer036.Node newCur = map.get(cur);
             newCur.next = map.get(cur.next);
             newCur.random = map.get(cur.random);
             cur = cur.next;
@@ -58,8 +58,8 @@ public class Offer035 {
 
 class Node {
     int val;
-    Node next;
-    Node random;
+    com.ToOffer.offer036.Node next;
+    com.ToOffer.offer036.Node random;
 
     public Node(int val) {
         this.val = val;
