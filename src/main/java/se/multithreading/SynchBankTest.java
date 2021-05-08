@@ -2,6 +2,7 @@ package se.multithreading;
 
 import se.multithreading.domain.Bank;
 import se.multithreading.domain.Bank02;
+import se.multithreading.domain.Bank03;
 
 /**
  * @author icodeboy
@@ -9,12 +10,12 @@ import se.multithreading.domain.Bank02;
  * 不断从一个给定账户取钱，选择一个随机账户打入随机金额
  */
 public class SynchBankTest {
-    public static final int NACCOUNTS = 100;
+    public static final int NACCOUNTS = 10;
     public static final double INITIAL_BALANCE = 1000;
     public static final double MAX_AMOUNT = 1000;
     public static final int DELAY = 10;
     public static void main(String[] args) {
-        Bank02 bank = new Bank02(NACCOUNTS, INITIAL_BALANCE);
+        Bank03 bank = new Bank03(NACCOUNTS, INITIAL_BALANCE);
         for (int i = 0; i < NACCOUNTS; i++) {
             int fromAccount = i;
             Runnable r = () -> {
@@ -30,7 +31,7 @@ public class SynchBankTest {
                 }
             };
 
-            new Thread(r).start();
+            new Thread(r,"线程"+i).start();
         }
     }
 }
