@@ -3,6 +3,7 @@ package com.medium;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,29 +21,33 @@ public class M139_WordBreak {
      * @return
      */
     private boolean canBreak = false;
-    private Map<String, Boolean> map;
-    public boolean wordBreakByDFS(String s, List<String> wordDict) {
-        dfs(s, wordDict, 0);
-        return canBreak;
+    private Map<Integer, Boolean> map;
+    public boolean wordBreak(String s, List<String> wordDict) {
+        map = new HashMap<>();
+        return dfs(s, wordDict, 0);
     }
 
-    public void dfs(String s, List<String> wordDict, int start){
-       if(s.equals("")){
-           canBreak = true;
-           return;
-       }
-        for (int i = 1; i <= s.length(); i++) {
-            //System.out.println(s.substring(0,i));
-            String prefix = s.substring(0, i);
-            if(map.containsKey(prefix) && map.get(prefix) == false){
-                continue;
-            }
-            if(wordDict.contains(prefix)){
-                dfs(s.substring(i), wordDict, 0);
-            }else{
-                map.put(prefix, false);
+    public boolean dfs(String s, List<String> wordDict, int start){
+        if(start == s.length()){
+            return true;
+        }
+        if(map.containsKey(start)){
+            return map.get(start);
+        }
+
+        // 因为String.substring(start, i) ===> [start, i)
+        for (int i = start + 1; i < s.length() + 1; i++) {
+            String prefix = s.substring(start, i);
+            // 如果prefix和剩下的都能在单词列表中找到，则返回true
+            if(wordDict.contains(prefix) && dfs(s, wordDict, i)){
+                map.put(start, true);
+                return true;
             }
         }
+
+        // 如果遍历完整个字符串，都不能同时满足prefix和后缀在单词列表中找到，返回false;
+        map.put(start, false);
+        return false;
     }
 
     @Test
@@ -51,7 +56,7 @@ public class M139_WordBreak {
         List<String> list = new ArrayList<>();
         list.add("12");
         list.add("45");
-        System.out.println(this.wordBreakByDFS("12345",list));
+        //System.out.println(this.wordBreakByDFS("12345",list));
         //System.out.println("01234".replace("123", "").contains("123"));
     }
 }
