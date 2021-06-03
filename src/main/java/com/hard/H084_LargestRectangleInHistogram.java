@@ -48,5 +48,32 @@ public class H084_LargestRectangleInHistogram {
         return res;
     }
 
+    public int largestRectangleAreaToReview(int[] heights) {
+        int len = heights.length;
+        // 单调栈，存的是下标
+        Deque<Integer> st = new ArrayDeque<>();
+        // 添加哨兵，确保了栈一定不为空
+        len = len + 2;
+        int[] newHeights = new int[len];
+        newHeights[0] = 0;
+        for (int i = 0; i < len - 2; i++) {
+            newHeights[i + 1] = heights[i];
+        }
+        newHeights[len - 1] = 0;
+        heights = newHeights;
+        // 哨兵入栈
+        st.addLast(0);
 
+        int res = 0;
+        for (int i = 1; i < len; i++) {
+            // 当栈顶元素严格大于数据当前元素，出栈，并计算面积
+           while(heights[i] < heights[st.getLast()]){
+                int h = heights[st.removeLast()];
+                int w = i - st.getLast() - 1;
+                res = Math.max(res, h * w);
+            }
+           st.addLast(i);
+        }
+        return res;
+    }
 }
