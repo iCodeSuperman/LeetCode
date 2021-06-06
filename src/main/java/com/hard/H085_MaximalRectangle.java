@@ -7,6 +7,7 @@ import java.util.Deque;
  * @author icodeboy
  */
 public class H085_MaximalRectangle {
+    
 
     public int maximalRectangle(char[][] matrix) {
         if(matrix == null || matrix.length == 0){

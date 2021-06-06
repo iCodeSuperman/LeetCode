@@ -1,19 +1,15 @@
-package com.easy;
+package com.hard;
 
-public class E121_BestTimeToBuyAndSellStock{
 
-    /**
-     * 一套框架解6题
-     * @param prices
-     * @return
-     */
+import org.junit.Test;
 
+public class H123_BestTimetoBuyandSellStock3 {
     public int maxProfit(int[] prices) {
         int n = prices.length;
         if(n == 0){
             return 0;
         }
-        int K = 1;
+        int K = 2;
         int[][][] dp = new int[n][K+1][2];
         for (int i = 0; i < n; i++) {
             for (int k = K; k >= 1; k--) {
@@ -29,19 +25,9 @@ public class E121_BestTimeToBuyAndSellStock{
         return dp[n-1][K][0];
     }
 
-
-
-    public int maxProfit2(int[] prices) {
-        if(prices.length == 0) return 0;
-        int profit;
-        int min = prices[0];
-        int max = 0;
-        Boolean bool = false;
-        for(int i = 1; i < prices.length; i++){
-            profit = prices[i] - min;
-            if(min > prices[i]) min = prices[i];
-            if(max < profit) max = profit;
-        }
-        return max;
+    @Test
+    public void t(){
+        int[] arr = {3,3,5,0,0,3,1,4};
+        System.out.println(this.maxProfit(arr));
     }
 }
