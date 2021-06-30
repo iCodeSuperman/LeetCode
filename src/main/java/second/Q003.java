@@ -7,6 +7,11 @@ import java.util.Map;
  * @author icodeboy
  */
 public class Q003 {
+    /**
+     * day 2021-05-11
+     * @param s
+     * @return
+     */
     public int lengthOfLongestSubstring(String s) {
         char[] chars = s.toCharArray();
         int len = s.length();
@@ -25,4 +30,31 @@ public class Q003 {
         }
         return max;
     }
+
+    /**
+     * day 2021-06-27
+     * @param s
+     * @return
+     */
+    public int lengthOfLongestSubstring2(String s){
+        if(s == null || s.length() == 0){
+            return 0;
+        }
+        int len = s.length();
+        int left = -1, right = -1, max = -1;
+        Map<Character, Integer> map = new HashMap<>(len + 1);
+        while(right + 1 < len){
+            right++;
+            char c = s.charAt(right);
+            if(map.containsKey(c)){
+                left = Math.max(map.get(c), left);
+
+            }
+            max = Math.max(right - left, max);
+            map.put(c, right);
+        }
+        return max;
+    }
 }
+
+

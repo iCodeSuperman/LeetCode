@@ -1,8 +1,11 @@
 package se.multithreading;
 
+import org.junit.Test;
 import se.multithreading.domain.Bank;
 
 import java.util.Random;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author icodeboy
@@ -44,6 +47,12 @@ public class ThreadTest01 {
 
         new Thread(task1).start();
         new Thread(task2).start();
+    }
+
+
+    @Test
+    public void t(){
+
     }
 }
 
