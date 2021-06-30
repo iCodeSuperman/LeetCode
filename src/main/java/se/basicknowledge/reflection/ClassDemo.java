@@ -1,6 +1,6 @@
 package se.basicknowledge.reflection;
 
-import com.sun.jdi.Bootstrap;
+// import com.sun.jdi.Bootstrap;
 import org.junit.Test;
 
 import java.lang.reflect.Constructor;
