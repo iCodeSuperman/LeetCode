@@ -2,6 +2,10 @@ package second;
 
 import com.domain.ListNode;
 
+/**
+ * 022 链表倒数第K个结点
+ * @author icodeboy
+ */
 public class Offer022 {
     public ListNode getKthFromEnd(ListNode head, int k) {
         ListNode slow = head;
