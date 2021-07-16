@@ -1,8 +1,8 @@
 package se.basicknowledge;
 
+import org.junit.Test;
 import se.domain.TargetObject;
 
-import java.lang.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -31,6 +31,16 @@ public class InvokeDemo {
         privateMethod.invoke(targetObject);
 
     }
+
+    @Test
+    public void t(){
+        int a = Integer.MAX_VALUE;
+        long b = 2 * (long)a;
+        long b1 = (long)Math.pow(2, 24) * 255 + 255 * 256 * 256 + 255 * 256+ 255;
+        System.out.println(b);
+        System.out.println(b1);
+    }
+
 }
 
 

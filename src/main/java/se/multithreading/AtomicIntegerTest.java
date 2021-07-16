@@ -25,5 +25,4 @@ public class AtomicIntegerTest {
         System.out.println(count.getAndIncrement());
     }
 
-
 }

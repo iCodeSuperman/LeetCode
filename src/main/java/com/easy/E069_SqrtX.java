@@ -50,4 +50,9 @@ public class E069_SqrtX {
         double val2 = mySqrtForDouble(v);
         System.out.printf("自带库函数=%.6f; 我的=%.6f \n", val1, val2);
     }
+
+    @Test
+    public void t2(){
+        System.out.printf("%.10f\n", 1e-8);
+    }
 }

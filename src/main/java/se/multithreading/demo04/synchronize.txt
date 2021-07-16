@@ -1,0 +1,4 @@
+demo01 : 阻塞+唤醒
+demo02 : 测试notify()+wait(); 线程A唤醒+释放obj对象锁，线程B获得锁
+demo03 : 使用Object.wait()/notify(); 实现同步队列
+

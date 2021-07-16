@@ -1,5 +1,7 @@
 package second;
 
+import org.junit.Test;
+
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
@@ -63,5 +65,10 @@ public class Q581 {
 
         int res = end - start + 1;
         return res > 0 ? res : 0;
+    }
+
+    @Test
+    public void t(){
+        System.out.println(Integer.valueOf(100) == 100);
     }
 }
