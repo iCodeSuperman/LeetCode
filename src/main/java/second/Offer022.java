@@ -16,6 +16,8 @@ public class Offer022 {
             k--;
         }
 
+
+
         if(fast == null){
             return head;
         }
