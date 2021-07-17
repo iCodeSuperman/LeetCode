@@ -8,6 +8,6 @@ import com.domain.TreeNode;
  */
 public class Q337 {
     public int rob(TreeNode root) {
-
+        return 0;
     }
 }
