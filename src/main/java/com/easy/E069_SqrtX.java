@@ -2,6 +2,8 @@ package com.easy;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+
 public class E069_SqrtX {
     public int mySqrt(int a) {
         return (int)Math.round(mySqrtForDouble(a));
@@ -45,7 +47,7 @@ public class E069_SqrtX {
 
     @Test
     public void t(){
-        double v = 13;
+        double v = 8;
         double val1 = Math.sqrt(v);
         double val2 = mySqrtForDouble(v);
         System.out.printf("自带库函数=%.6f; 我的=%.6f \n", val1, val2);
@@ -54,5 +56,8 @@ public class E069_SqrtX {
     @Test
     public void t2(){
         System.out.printf("%.10f\n", 1e-8);
+        
     }
+
+
 }
